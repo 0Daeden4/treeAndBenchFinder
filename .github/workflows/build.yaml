@@ -1,0 +1,28 @@
+name: Build macOS exec
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: install pyinstaller
+      run: pip install pyinstaller
+
+    - name: executable
+      run: pyinstaller --onefile polygonialFinderPanel.py
+
+    - name: upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: polygonialFinderPanel
+        path: dist/polygonialFinderPanel
