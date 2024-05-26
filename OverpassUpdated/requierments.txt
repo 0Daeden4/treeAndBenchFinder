@@ -1,0 +1,5 @@
+shapely
+webbrowser
+requests
+pyproj
+tkinter
